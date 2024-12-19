@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .form-container h1 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-container textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .form-container button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .form-container button:hover {
+            background-color: #218838;
+        }
+
+        .output-container {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 1rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Online Application Form</h1>
+        <form id="applicationForm">
+            <input type="text" id="fullName" placeholder="Full Name" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="text" id="phoneNumber" placeholder="Phone Number" required />
+            <textarea id="address" placeholder="Address" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="output" class="output-container"></div>
+    </div>
+
+    <script>
+        document.getElementById("applicationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting traditionally
+
+            // Get form values
+            const fullName = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            const phoneNumber = document.getElementById("phoneNumber").value;
+            const address = document.getElementById("address").value;
+
+            // Display the output
+            const output = `
+                <strong>Submitted Information:</strong><br>
+                <strong>Full Name:</strong> ${fullName}<br>
+                <strong>Email:</strong> ${email}<br>
+                <strong>Phone Number:</strong> ${phoneNumber}<br>
+                <strong>Address:</strong> ${address}
+            `;
+            document.getElementById("output").innerHTML = output;
+        });
+    </script>
+</body>
+</html>
